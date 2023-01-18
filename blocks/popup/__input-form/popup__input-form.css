@@ -1,0 +1,28 @@
+.popup__input-form {
+  box-sizing: border-box;
+  border: 0;
+  outline: none;
+  border-bottom: 1px solid #000000;
+  width: 358px;
+  height: 27px;
+  padding: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  font-family: inherit;
+}
+
+.popup__input-form:nth-child(2n) {
+  margin-top: 25px;
+}
+
+@media (max-width: 320px) {
+  .popup__input-form {
+    width: 238px;
+  }
+  .popup__input-form:nth-child(2n) {
+    margin-top: 30px;
+  }
+}
