@@ -5,6 +5,14 @@
   gap: 17px;
 }
 
+@media (max-width: 1040px) {
+  .elements {
+    margin-top: 40px;
+    grid-template-columns: auto auto;
+    gap: 30px;
+  }
+}
+
 @media (max-width: 320px) {
   .elements {
     margin-top: 35px;

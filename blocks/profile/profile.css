@@ -2,7 +2,7 @@
 display: flex;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 1040px) {
   .profile {
     display: grid;
     grid-template-areas:
@@ -13,3 +13,5 @@ display: flex;
     grid-template-columns: 245px 35px;
   }
 }
+
+

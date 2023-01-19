@@ -7,5 +7,11 @@
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+}
+
+@media (max-width: 320px) {
+  .popup {
+   max-width: 320px;
+  }
 }

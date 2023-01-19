@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="pages/index.css">
+  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 
@@ -12,7 +12,7 @@
 
 
   <header class="header">
-    <img class="header__logo" src="./images/logo/Vector.png" alt="лого проекта">
+    <img class="header__logo" src="./images/logo/logo.svg" alt="лого проекта mesto (Россия)">
 
   </header>
 
@@ -21,43 +21,56 @@
     <section class="profile" aria-label="Секция с профилем">
       <img class="profile__avatar" src="./images/image.jpg" alt="аватарка">
       <div class="profile__info">
-        <p class="profile__info-name">Жак-Ив Кусто</p>
+        <h1 class="profile__info-name">Жак-Ив Кусто</h1>
         <p class="profile__info-job">Исследователь океана</p>
       </div>
-      <button class="profile__button-edit"></button>
-      <button class="profile__button-add"></button>
+      <button class="profile__button-edit" type="button" aria-label="кнопка редактирования текста"></button>
+      <button class="profile__button-add" type="button" aria-label="кнопка отправки текста"></button>
     </section>
 
     <section class="elements" aria-label="Секция с фото">
       <div class="element">
         <img class="element__foto" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
-        <p class="element__text">Карачаевск</p>
-        <button class="element__like"></button>
+        <div class="element__container">
+          <h2 class="element__text">Карачаевск</h2>
+          <button class="element__like" type="button" aria-label="кнопка нравится"></button>
+        </div>
+      </div>
       </div>
       <div class="element">
         <img class="element__foto" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
-        <p class="element__text">Гора Эльбрус</p>
-        <button class="element__like"></button>
+        <div class="element__container">
+          <h2 class="element__text">Гора Эльбрус</h2>
+          <button class="element__like" type="button" aria-label="кнопка нравится"></button>
+        </div>
       </div>
       <div class="element">
         <img class="element__foto" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-        <p class="element__text">Домбай</p>
-        <button class="element__like"></button>
+        <div class="element__container">
+          <h2 class="element__text">Домбай</h2>
+          <button class="element__like" type="button" aria-label="кнопка нравится"></button>
+        </div>
       </div>
       <div class="element">
         <img class="element__foto" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус">
-        <p class="element__text">Гора Эльбрус</p>
-        <button  class="element__like"></button>
+        <div class="element__container">
+          <h2 class="element__text">Гора Эльбрус</h2>
+          <button class="element__like" type="button" aria-label="кнопка нравится"></button>
+        </div>
       </div>
       <div class="element">
         <img class="element__foto" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-        <p class="element__text">Домбай</p>
-        <button  class="element__like"></button>
+        <div class="element__container">
+          <h2 class="element__text">Домбай</h2>
+          <button class="element__like" type="button" aria-label="кнопка нравится"></button>
+        </div>
       </div>
       <div class="element">
         <img class="element__foto" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкесия">
-        <p class="element__text">Карачаево-Черкесия</p>
-        <button class="element__like"></button>
+        <div class="element__container">
+          <h2 class="element__text">Карачаево-Черкесия</h2>
+          <button class="element__like" type="button" aria-label="кнопка нравится"></button>
+        </div>
       </div>
 
     </section>
@@ -65,7 +78,7 @@
   </main>
 
   <footer class="footer">
-    <p class="footer__text">© 2020 Mesto Russia</p>
+    <p class="footer__text" lang="En">&#169; 2020 Mesto Russia</p>
   </footer>
 
 
@@ -87,4 +100,5 @@
 
   <script src="./scripts/index.js"></script>
 </body>
+
 </html>

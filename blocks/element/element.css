@@ -1,7 +1,6 @@
 .element{
   border-radius: 10px;
-  max-width: 282px;
-  background-color: white;
-  overflow: hidden;
-  position: relative;
+  width: 282px;
+  height: 361px;
+  background-color:  #FFFFFF;
 }

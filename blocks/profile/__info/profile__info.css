@@ -1,5 +1,5 @@
-@media (max-width: 320px) {
-  .Profile__info {
+@media (max-width: 1040px) {
+  .profile__info {
     grid-area: name;
   }
 }
