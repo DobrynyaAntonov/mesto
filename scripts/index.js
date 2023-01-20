@@ -11,11 +11,11 @@ let nameProfile = document.querySelector('.profile__info-name');
 const openPopup = function() {
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
-  popupElement.classList.add ('popup__opened');
+  popupElement.classList.add ('popup_opened');
 }
 
 const closePopup = function() {
-  popupElement.classList.remove ('popup__opened');
+  popupElement.classList.remove ('popup_opened');
 }
 
 popupOpenButtonElement.addEventListener('click', openPopup);
@@ -28,7 +28,7 @@ function handleFormSubmit (evt) {
 
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
-  popupElement.classList.remove ('popup__opened');
+  closePopup ();
 }
 
 formElement.addEventListener('submit', handleFormSubmit);

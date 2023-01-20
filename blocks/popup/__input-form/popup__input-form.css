@@ -9,7 +9,8 @@
   font-size: 14px;
   line-height: 17px;
   color: #000000;
-  font-family: 'Inter';
+  font-family: 'Inter' Arial, sans-serif;
+  margin-left: 35px;
 }
 
 .popup__input-form:nth-child(2n) {

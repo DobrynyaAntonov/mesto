@@ -8,14 +8,16 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  width: 336px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1040px) {
   .profile__info-job{
     font-size: 14px;
     line-height: 17px;
     text-align: center;
-    margin-left: 37px;
+    margin-left: 0;
+    width: 282px;
   }
 }
 

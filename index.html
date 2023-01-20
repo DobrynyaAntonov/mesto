@@ -24,7 +24,7 @@
         <h1 class="profile__info-name">Жак-Ив Кусто</h1>
         <p class="profile__info-job">Исследователь океана</p>
       </div>
-      <button class="profile__button-edit" type="button" aria-label="кнопка редактирования текста"></button>
+      <button class="profile__button-edit" type="button" aria-label="кнопка редактирования профиля"></button>
       <button class="profile__button-add" type="button" aria-label="кнопка отправки текста"></button>
     </section>
 
@@ -84,13 +84,12 @@
 
   <section class="popup ">
     <div class="popup__container">
-      <button class="popup__close"></button>
+      <button class="popup__close" type="button"></button>
+
+      <h2 class="popup__content-text" type="button">Редактировать профиль</h2>
       <form class="popup__content">
-        <h1 class="popup__content-text">Редактировать профиль</h1>
-        <p class="popup__input">
           <input class="popup__input-form popup__input-form_name" type="text" value="Жак-Ив Кусто">
           <input class="popup__input-form popup__input-form_job" type="text" value="Исследователь океана">
-        </p>
         <button class="popup__submit" type="submit">Сохранить</button>
 
       </form>
