@@ -8,7 +8,7 @@
   padding-top: 16px;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 768px) {
   .popup__content-text {
     font-size: 18px;
     line-height: 22px;

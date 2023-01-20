@@ -10,12 +10,14 @@
 }
 
 
-@media (max-width: 320px) {
+@media (max-width: 768px) {
   .popup__container {
-    margin-top: 103px;
+    margin-top: 123px;
     max-width: 282px;
     margin-left: 0;
     margin-right: 0;
     height: 322px;
   }
 }
+
+

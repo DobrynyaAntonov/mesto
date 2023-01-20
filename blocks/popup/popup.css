@@ -10,6 +10,13 @@
   align-items: center;
 }
 
+
+
+@media (max-width: 768px) {
+  .popup {
+   width: 100%;
+  }
+}
 @media (max-width: 320px) {
   .popup {
    max-width: 320px;
