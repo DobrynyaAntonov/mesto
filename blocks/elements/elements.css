@@ -5,7 +5,7 @@
   gap: 17px;
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1090px) {
   .elements {
     margin-top: 40px;
     grid-template-columns: auto auto;
