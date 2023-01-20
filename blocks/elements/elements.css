@@ -13,10 +13,15 @@
   }
 }
 
+@media (max-width: 768px) {
+  .elements {
+    grid-template-columns: auto;
+  }
+}
+
 @media (max-width: 320px) {
   .elements {
     margin-top: 35px;
-    grid-template-columns: auto;
     gap: 20px;
   }
 }

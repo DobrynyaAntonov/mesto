@@ -11,6 +11,7 @@ display: flex;
     "job job "
     "add add";
     grid-template-columns: 245px 35px;
+    justify-content: center
   }
 }
 
