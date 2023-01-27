@@ -29,48 +29,19 @@
     </section>
 
     <section class="elements" aria-label="Секция с фото">
-      <div class="element">
-        <img class="element__foto" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
-        <div class="element__container">
-          <h2 class="element__text">Карачаевск</h2>
-          <button class="element__like" type="button" aria-label="кнопка нравится"></button>
+
+      <template id="template">
+        <div class="element">
+          <button class="element__delete" type="button" aria-label="удаление карточки"></button>
+          <img class="element__foto" src="" alt="">
+          <div class="element__container">
+            <h2 class="element__text"></h2>
+            <button class="element__like" type="button" aria-label="кнопка нравится"></button>
+          </div>
         </div>
-      </div>
-      <div class="element">
-        <img class="element__foto" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
-        <div class="element__container">
-          <h2 class="element__text">Гора Эльбрус</h2>
-          <button class="element__like" type="button" aria-label="кнопка нравится"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__foto" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-        <div class="element__container">
-          <h2 class="element__text">Домбай</h2>
-          <button class="element__like" type="button" aria-label="кнопка нравится"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__foto" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус">
-        <div class="element__container">
-          <h2 class="element__text">Гора Эльбрус</h2>
-          <button class="element__like" type="button" aria-label="кнопка нравится"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__foto" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-        <div class="element__container">
-          <h2 class="element__text">Домбай</h2>
-          <button class="element__like" type="button" aria-label="кнопка нравится"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__foto" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкесия">
-        <div class="element__container">
-          <h2 class="element__text">Карачаево-Черкесия</h2>
-          <button class="element__like" type="button" aria-label="кнопка нравится"></button>
-        </div>
-      </div>
+      </template>
+
+
 
     </section>
 
@@ -82,18 +53,39 @@
 
 
 
-  <section class="popup ">
+  <section class="popup">
     <div class="popup__container">
       <button class="popup__close" type="button"></button>
-
       <h2 class="popup__content-text">Редактировать профиль</h2>
       <form class="popup__content">
-          <input class="popup__input-form popup__input-form_type_name" type="text" value="Жак-Ив Кусто" name="name" placeholder="введите имя">
-          <input class="popup__input-form popup__input-form_type_job" type="text" value="Исследователь океана"  name="job" placeholder="описание работы">
+        <input class="popup__input-form popup__input-form_type_name" type="text" value="Жак-Ив Кусто" name="name"
+          placeholder="введите имя">
+        <input class="popup__input-form popup__input-form_type_job" type="text" value="Исследователь океана" name="job"
+          placeholder="описание работы">
         <button class="popup__submit" type="submit">Сохранить</button>
-
       </form>
+    </div>
+  </section>
 
+  <section class="add">
+    <div class="add__container">
+      <button class="add__close" type="button"></button>
+      <h2 class="add__content-text">Новое место</h2>
+      <form class="add__content">
+        <input class="add__input-form add__input-form_type_name" type="text" value="" name="name"
+          placeholder="Название">
+        <input class="add__input-form add__input-form_type_src" type="text" value="" name="job"
+          placeholder="Ссылка на картинку">
+        <button class="add__submit" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="image image_opened">
+    <div class="image__container">
+      <img class="image__foto" src="https://proprikol.ru/wp-content/uploads/2020/08/kartinki-krutyh-mashin-57.jpg"alt="">
+      <button class="image__close" type="button"></button>
+      <h2 class="image__text">ffffff</h2>
     </div>
   </section>
 
