@@ -1,25 +1,29 @@
-const popupElement = document.querySelector('.popup');
-const popupCloseButtonElement = popupElement.querySelector('.popup__close');
+const popup = document.querySelector('.popup');
+const profilePopup = document.querySelector('.profile-popup');
 const popupOpenButtonElement = document.querySelector('.profile__button-edit');
-
 const formElement = document.querySelector('.popup__content');
 const nameInput = document.querySelector('.popup__input-form_type_name');
 const jobInput = document.querySelector('.popup__input-form_type_job');
 const jobProfile = document.querySelector('.profile__info-job');
 const nameProfile = document.querySelector('.profile__info-name');
+const closeButtons = document.querySelectorAll('.popup__close');
 
-const openPopup = function () {
-  nameProfile.textContent = nameInput.value;
-  jobProfile.textContent = jobInput.value;
-  popupElement.classList.add('popup_opened');
+const openPopup = function (popup) {
+  popup.classList.add('popup_opened');
 }
 
-const closePopup = function () {
-  popupElement.classList.remove('popup_opened');
+const closePopup = function (popup) {
+  popup.classList.remove('popup_opened');
 }
 
-popupOpenButtonElement.addEventListener('click', openPopup);
-popupCloseButtonElement.addEventListener('click', closePopup);
+popupOpenButtonElement.addEventListener('click', () => openPopup(profilePopup));
+
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
+
+
 
 
 function handleFormSubmit(evt) {
@@ -27,7 +31,7 @@ function handleFormSubmit(evt) {
 
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
-  closePopup();
+  closePopup(profilePopup);
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
@@ -65,64 +69,65 @@ const sectionElements = document.querySelector('.elements')
 const element = document.querySelector('.element');
 const template = document.querySelector('#template');
 
+const imagePopup = document.querySelector('.image-popup');
+const imageFotoOpen = document.querySelector('.element__foto');
+const image = document.querySelector('.image__foto');
+const imageText = document.querySelector('.image__text');
 
-initialCards.forEach(function (item) {
+
+
+const createCard = (name, link) => {
   const fotoElement = template.content.querySelector('.element').cloneNode(true);
-  fotoElement.querySelector('.element__text').textContent = item.name;
-  fotoElement.querySelector('.element__foto').src = item.link;
-  fotoElement.querySelector('.element__foto').alt = item.name;
+  fotoElement.querySelector('.element__text').textContent = name;
+  fotoElement.querySelector('.element__foto').src = link;
+  fotoElement.querySelector('.element__foto').alt = name;
+
   const buttonLike = fotoElement.querySelector('.element__like');
   buttonLike.addEventListener('click', function (evt) {
     const evtTarget = evt.target;
     evtTarget.classList.toggle('element__like_active');
   });
+
   const deleteBtn = fotoElement.querySelector('.element__delete');
   deleteBtn.addEventListener('click', () => {
     fotoElement.remove();
   });
 
   fotoElement.querySelector('.element__foto').addEventListener("click", () => {
-    openImage(item);
+    imagePopup.classList.add('popup_opened');
+    image.src = fotoElement.querySelector('.element__foto').src;
+    imageText.textContent = fotoElement.querySelector('.element__text').textContent;
+    image.alt = fotoElement.querySelector('.element__foto').alt;
   });
+  return fotoElement;
+ };
 
-  sectionElements.append(fotoElement);
-
-});
-
-const openImage = function (item) {
-  imageElement.classList.add('image_opened');
-  image.src = item.link;
-  imageText.textContent = item.name;
-  image.alt = item.name;
+const renderCard = (name, link) => {
+  sectionElements.append(createCard(name, link));
 }
 
+initialCards.forEach((item) => {
+  renderCard(item.name, item.link);
+});
 
 
-const addElement = document.querySelector('.add');
-const addCloseButtonElement = addElement.querySelector('.add__close');
+const addPopup = document.querySelector('.add-popup');
 const addOpenButtonElement = document.querySelector('.profile__button-add');
 
-const formElementAdd = document.querySelector('.add__content');
+const formElementAdd = document.querySelector('.popup__content-add');
 const nameInputAdd = document.querySelector('.add__input-form_type_name');
 const srcInputAdd = document.querySelector('.add__input-form_type_src');
 
 
-const openAdd = function () {
 
-  addElement.classList.add('add_opened');
-}
+addOpenButtonElement.addEventListener('click', () => openPopup(addPopup));
 
-const closeAdd = function () {
-  addElement.classList.remove('add_opened');
-}
-
-addOpenButtonElement.addEventListener('click', openAdd);
-addCloseButtonElement.addEventListener('click', closeAdd);
 
 
 
 function handleFormSubmitAdd(evt) {
   evt.preventDefault();
+
   const fotoElement = template.content.querySelector('.element').cloneNode(true);
   fotoElement.querySelector('.element__text').textContent = nameInputAdd.value;
   fotoElement.querySelector('.element__foto').src = srcInputAdd.value;
@@ -138,33 +143,16 @@ function handleFormSubmitAdd(evt) {
   });
 
   fotoElement.querySelector('.element__foto').addEventListener("click", () => {
-    imageElement.classList.add('image_opened');
+    imagePopup.classList.add('popup_opened');
     image.src = fotoElement.querySelector('.element__foto').src;
     imageText.textContent = fotoElement.querySelector('.element__text').textContent;
     image.alt = fotoElement.querySelector('.element__foto').alt;
   });
 
   sectionElements.prepend(fotoElement);
-  closeAdd();
-  nameInputAdd.value = '';
-  srcInputAdd.value = '';
+  closePopup(addPopup);
+  evt.target.reset();
 
 };
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
-
-
-const imageElement = document.querySelector('.image');
-const imageCloseButtonElement = imageElement.querySelector('.image__close');
-const imageFotoOpen = document.querySelector('.element__foto');
-const image = document.querySelector('.image__foto');
-const imageText = document.querySelector('.image__text');
-
-
-
-
-const closeImage = function () {
-  imageElement.classList.remove('image_opened');
-}
-
-imageCloseButtonElement.addEventListener('click', closeImage);
 
