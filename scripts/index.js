@@ -71,10 +71,8 @@ const template = document.querySelector('#template');
 
 const imagePopup = document.querySelector('.image-popup');
 const imageFotoOpen = document.querySelector('.element__foto');
-const image = document.querySelector('.image__foto');
-const imageText = document.querySelector('.image__text');
-
-
+const image = document.querySelector('.popup__foto');
+const imageText = document.querySelector('.popup__text');
 
 const createCard = (name, link) => {
   const fotoElement = template.content.querySelector('.element').cloneNode(true);
@@ -115,8 +113,8 @@ const addPopup = document.querySelector('.add-popup');
 const addOpenButtonElement = document.querySelector('.profile__button-add');
 
 const formElementAdd = document.querySelector('.popup__content-add');
-const nameInputAdd = document.querySelector('.add__input-form_type_name');
-const srcInputAdd = document.querySelector('.add__input-form_type_src');
+const nameInputAdd = document.querySelector('.popup__input-form_type_name-image');
+const srcInputAdd = document.querySelector('.popup__input-form_type_src-image');
 
 
 
@@ -155,4 +153,6 @@ function handleFormSubmitAdd(evt) {
 
 };
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
+
+
 
