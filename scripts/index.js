@@ -10,6 +10,8 @@ const closeButtons = document.querySelectorAll('.popup__close');
 
 const openPopup = function (popup) {
   popup.classList.add('popup_opened');
+  popup.addEventListener('click', closePopupOverlay);
+  window.addEventListener('keydown', closePopupEsc);
 }
 
 const closePopup = function (popup) {
@@ -111,11 +113,9 @@ const renderCard = (name, link) => {
 }
 
 
-
 initialCards.forEach((item) => {
   renderCard(item.name, item.link);
 });
-
 
 const addPopup = document.querySelector('.add-popup');
 const addOpenButtonElement = document.querySelector('.profile__button-add');
@@ -138,3 +138,23 @@ function handleFormSubmitAdd(evt) {
 };
 
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
+
+function closePopupOverlay(event) {
+  if (event.target !== event.currentTarget) {
+    return
+  }
+  const popup = document.querySelector('.popup_opened');
+
+  closePopup(popup);
+};
+
+function closePopupEsc(event) {
+  if (event.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  };
+};
+
+
+
+
