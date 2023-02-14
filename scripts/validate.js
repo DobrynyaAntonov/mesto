@@ -7,33 +7,22 @@ const formValidation = {
   errorClass: 'popup__error_visible'
 };
 
-
 function disableSubmit(event) {
   event.preventDefault();
 };
 
+
 function enableValidation(config) {
-  const form = document.querySelector(config.formSelector);
-  form.addEventListener('submit', disableSubmit);
-  form.addEventListener('input', function(){
+  const form = Array.from(document.querySelectorAll(config.formSelector));
+  form.forEach((form) => {
+    form.addEventListener('submit', disableSubmit);
+    form.addEventListener('input', function(){
+      toggleButton (form, config);
+    });
+    addInputListeners(form, config);
     toggleButton (form, config);
-  })
-
-  addInputListeners(form, config);
-  toggleButton (form, config);
+});
 };
-
-// function enableValidation(config) {
-//   const form = Array.from(document.querySelectorAll(config.formSelector));
-//   form.forEach((inputSelector) => {
-//     inputSelector.addEventListener('submit', disableSubmit);
-//     inputSelector.addEventListener('input', function(){
-//       toggleButton (form, config);
-//     });
-//     addInputListeners(form, config);
-//     toggleButton (form, config);
-// });
-// };
 
 function handleFormInput(event, config) {
   const input = event.target;
