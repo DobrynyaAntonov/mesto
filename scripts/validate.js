@@ -7,14 +7,6 @@ const formValidation = {
   errorClass: 'popup__error_visible'
 };
 
-const formValidationAdd = {
-  formSelector: '.popup__content-add',
-  inputSelector: '.popup__input-form',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_disabled',
-  inputErrorClass: 'popup__input-form_type_error',
-  errorClass: 'popup__error_visible'
-};
 
 function disableSubmit(event) {
   event.preventDefault();
@@ -31,6 +23,17 @@ function enableValidation(config) {
   toggleButton (form, config);
 };
 
+// function enableValidation(config) {
+//   const form = Array.from(document.querySelectorAll(config.formSelector));
+//   form.forEach((inputSelector) => {
+//     inputSelector.addEventListener('submit', disableSubmit);
+//     inputSelector.addEventListener('input', function(){
+//       toggleButton (form, config);
+//     });
+//     addInputListeners(form, config);
+//     toggleButton (form, config);
+// });
+// };
 
 function handleFormInput(event, config) {
   const input = event.target;
@@ -66,5 +69,5 @@ function addInputListeners(form, config) {
 
 
 enableValidation(formValidation);
-enableValidation(formValidationAdd);
+
 
