@@ -1,7 +1,6 @@
-const popup = document.querySelector('.popup');
 const profilePopup = document.querySelector('.profile-popup');
 const popupOpenButtonElement = document.querySelector('.profile__button-edit');
-const formElement = document.querySelector('.popup__content');
+const profileForm = document.querySelector('.popup__content');
 const nameInput = document.querySelector('.popup__input-form_type_name');
 const jobInput = document.querySelector('.popup__input-form_type_job');
 const jobProfile = document.querySelector('.profile__info-job');
@@ -16,6 +15,7 @@ const openPopup = function (popup) {
 
 const closePopup = function (popup) {
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('click', closePopupOverlay);
   window.removeEventListener('keydown', closePopupEsc);
 }
 
@@ -35,7 +35,7 @@ closeButtons.forEach((button) => {
 
 
 
-function handleFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
   nameProfile.textContent = nameInput.value;
@@ -43,7 +43,7 @@ function handleFormSubmit(evt) {
   closePopup(profilePopup);
 }
 
-formElement.addEventListener('submit', handleFormSubmit);
+profileForm.addEventListener('submit', handleProfileFormSubmit);
 
 
 
@@ -83,11 +83,14 @@ const imageFotoOpen = document.querySelector('.element__foto');
 const image = document.querySelector('.popup__foto');
 const imageText = document.querySelector('.popup__text');
 
+
+
 const createCard = (name, link) => {
   const fotoElement = template.content.querySelector('.element').cloneNode(true);
+  const fotoContent = fotoElement.querySelector('.element__foto');
   fotoElement.querySelector('.element__text').textContent = name;
-  fotoElement.querySelector('.element__foto').src = link;
-  fotoElement.querySelector('.element__foto').alt = name;
+  fotoContent.src = link;
+  fotoContent.alt = name;
 
   const buttonLike = fotoElement.querySelector('.element__like');
   buttonLike.addEventListener('click', function (evt) {
@@ -100,11 +103,11 @@ const createCard = (name, link) => {
     fotoElement.remove();
   });
 
-  fotoElement.querySelector('.element__foto').addEventListener("click", () => {
+  fotoContent.addEventListener("click", () => {
     openPopup(imagePopup);
-    image.src = fotoElement.querySelector('.element__foto').src;
-    imageText.textContent = fotoElement.querySelector('.element__text').textContent;
-    image.alt = fotoElement.querySelector('.element__foto').alt;
+    image.src = link;
+    imageText.textContent = name;
+    image.alt = name;
   });
   return fotoElement;
 };
@@ -144,9 +147,8 @@ function closePopupOverlay(event) {
   if (event.target !== event.currentTarget) {
     return
   }
-  const popup = document.querySelector('.popup_opened');
+  closePopup(event.currentTarget);
 
-  closePopup(popup);
 };
 
 function closePopupEsc(event) {

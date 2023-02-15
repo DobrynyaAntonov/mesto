@@ -13,15 +13,22 @@ function disableSubmit(event) {
 
 
 function enableValidation(config) {
-  const form = Array.from(document.querySelectorAll(config.formSelector));
-  form.forEach((form) => {
+  const forms = Array.from(document.querySelectorAll(config.formSelector));
+  forms.forEach((form) => {
     form.addEventListener('submit', disableSubmit);
-    form.addEventListener('input', function(){
-      toggleButton (form, config);
+    form.addEventListener('input', function () {
+      toggleButton(form, config);
     });
     addInputListeners(form, config);
-    toggleButton (form, config);
-});
+    toggleButton(form, config);
+
+    form.addEventListener('reset', () => {
+      setTimeout(() => {
+        toggleButton(form, config);
+      }, 0);
+    });
+
+  });
 };
 
 function handleFormInput(event, config) {
@@ -38,11 +45,12 @@ function handleFormInput(event, config) {
   }
 };
 
-function toggleButton (form, config){
+function toggleButton(form, config) {
   const buttonSubmit = form.querySelector(config.submitButtonSelector);
   const isFormValid = form.checkValidity();
   buttonSubmit.disabled = !isFormValid;
-  buttonSubmit.classList.toggle('popup__submit_disabled', !isFormValid);
+
+  buttonSubmit.classList.toggle(config.inactiveButtonClass, !isFormValid);
 }
 
 function addInputListeners(form, config) {
