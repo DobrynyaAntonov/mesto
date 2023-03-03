@@ -68,19 +68,17 @@ import Card from "./Card.js";
 
 const sectionElements = document.querySelector('.elements');
 
+function createCardItem(name, link, templateSelector) {
+  const card = new Card(name, link, templateSelector);
+  return card.generateCard();
+}
 
 
-
-
-
-const renderCard = (name, link, templateSelector) => {
-  const newCard = new Card(name, link, templateSelector);
-  sectionElements.append(newCard.generateCard());
-};
-
-initialCards.forEach((item) => {
-  renderCard(item.name, item.link, '#template',);
+initialCards.forEach((card) => {
+  const cardElement = createCardItem(card.name, card.link, '#template');
+  sectionElements.append(cardElement);
 });
+
 
 
 const addPopup = document.querySelector('.add-popup');
@@ -92,20 +90,17 @@ const srcInputAdd = document.querySelector('.popup__input-form_type_src-image');
 
 addOpenButtonElement.addEventListener('click', () => openPopup(addPopup));
 
-
 function handleFormSubmitAdd(evt) {
   evt.preventDefault();
   const name = nameInputAdd.value;
   const link = srcInputAdd.value;
-  const card = new Card(name, link, '#template');
-  const cardElement = card.generateCard();
-
+  const cardElement = createCardItem(name, link, '#template');
   sectionElements.prepend(cardElement);
-
   closePopup(addPopup);
   evt.target.reset();
   Validation();
 }
+
 
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
 
