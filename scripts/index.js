@@ -7,18 +7,8 @@ const jobProfile = document.querySelector('.profile__info-job');
 const nameProfile = document.querySelector('.profile__info-name');
 const closeButtons = document.querySelectorAll('.popup__close');
 
-const openPopup = function (popup) {
-  popup.classList.add('popup_opened');
-  popup.addEventListener('click', closePopupOverlay);
-  window.addEventListener('keydown', closePopupEsc);
-}
 
-const closePopup = function (popup) {
-  popup.classList.remove('popup_opened');
-  popup.removeEventListener('click', closePopupOverlay);
-  window.removeEventListener('keydown', closePopupEsc);
-}
-
+import { openPopup, closePopup, closePopupOverlay, closePopupEsc} from "./Utils.js";
 
 popupOpenButtonElement.addEventListener('click', () => {
   openPopup(profilePopup)
@@ -33,8 +23,6 @@ closeButtons.forEach((button) => {
 });
 
 
-
-
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
@@ -44,6 +32,7 @@ function handleProfileFormSubmit(evt) {
 }
 
 profileForm.addEventListener('submit', handleProfileFormSubmit);
+
 
 
 
@@ -74,52 +63,20 @@ const initialCards = [
   }
 ];
 
-const sectionElements = document.querySelector('.elements')
-const element = document.querySelector('.element');
-const template = document.querySelector('#template');
 
-const imagePopup = document.querySelector('.image-popup');
-const imageFotoOpen = document.querySelector('.element__foto');
-const image = document.querySelector('.popup__foto');
-const imageText = document.querySelector('.popup__text');
+import Card from "./Card.js";
 
+const sectionElements = document.querySelector('.elements');
 
-
-const createCard = (name, link) => {
-  const fotoElement = template.content.querySelector('.element').cloneNode(true);
-  const fotoContent = fotoElement.querySelector('.element__foto');
-  fotoElement.querySelector('.element__text').textContent = name;
-  fotoContent.src = link;
-  fotoContent.alt = name;
-
-  const buttonLike = fotoElement.querySelector('.element__like');
-  buttonLike.addEventListener('click', function (evt) {
-    const evtTarget = evt.target;
-    evtTarget.classList.toggle('element__like_active');
-  });
-
-  const deleteBtn = fotoElement.querySelector('.element__delete');
-  deleteBtn.addEventListener('click', () => {
-    fotoElement.remove();
-  });
-
-  fotoContent.addEventListener("click", () => {
-    openPopup(imagePopup);
-    image.src = link;
-    imageText.textContent = name;
-    image.alt = name;
-  });
-  return fotoElement;
+const renderCard = (name, link, templateSelector) => {
+  const newCard = new Card(name, link, templateSelector);
+  sectionElements.append(newCard.generateCard());
 };
 
-const renderCard = (name, link) => {
-  sectionElements.append(createCard(name, link));
-}
-
-
 initialCards.forEach((item) => {
-  renderCard(item.name, item.link);
+  renderCard(item.name, item.link, '#template');
 });
+
 
 const addPopup = document.querySelector('.add-popup');
 const addOpenButtonElement = document.querySelector('.profile__button-add');
@@ -135,29 +92,30 @@ function handleFormSubmitAdd(evt) {
   evt.preventDefault();
   const name = nameInputAdd.value;
   const link = srcInputAdd.value;
-  sectionElements.prepend(createCard(name, link));
+  const card = new Card(name, link, '#template');
+  const cardElement = card.generateCard();
+
+  sectionElements.prepend(cardElement);
 
   closePopup(addPopup);
   evt.target.reset();
-};
+}
 
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
 
-function closePopupOverlay(event) {
-  if (event.target !== event.currentTarget) {
-    return
-  }
-  closePopup(event.currentTarget);
+// Валидация форм
+import FormValidator from "./FormValidator.js";
 
+const formValidation = {
+  formSelector: '.popup__content',
+  inputSelector: '.popup__input-form',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_disabled',
+  inputErrorClass: 'popup__input-form_type_error',
+  errorClass: 'popup__error_visible'
 };
 
-function closePopupEsc(event) {
-  if (event.key === 'Escape') {
-    const popup = document.querySelector('.popup_opened');
-    closePopup(popup);
-  };
-};
-
-
+const formValidator = new FormValidator(formValidation);
+formValidator.enableValidation();
 
 
