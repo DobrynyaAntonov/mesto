@@ -8,7 +8,7 @@ const nameProfile = document.querySelector('.profile__info-name');
 const closeButtons = document.querySelectorAll('.popup__close');
 
 
-import { openPopup, closePopup, closePopupOverlay, closePopupEsc} from "./Utils.js";
+import { openPopup, closePopup, closePopupOverlay, closePopupEsc} from "./utils.js";
 
 popupOpenButtonElement.addEventListener('click', () => {
   openPopup(profilePopup)
@@ -68,13 +68,21 @@ import Card from "./Card.js";
 
 const sectionElements = document.querySelector('.elements');
 
+function createCardElement (name, link, templateSelector) {
+  const card = new Card(name, link, templateSelector);
+  return card.generateCard();
+}
+
+
+
+
 const renderCard = (name, link, templateSelector) => {
   const newCard = new Card(name, link, templateSelector);
   sectionElements.append(newCard.generateCard());
 };
 
 initialCards.forEach((item) => {
-  renderCard(item.name, item.link, '#template');
+  renderCard(item.name, item.link, '#template',);
 });
 
 
@@ -99,12 +107,14 @@ function handleFormSubmitAdd(evt) {
 
   closePopup(addPopup);
   evt.target.reset();
+  Validation();
 }
 
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
 
 // Валидация форм
 import FormValidator from "./FormValidator.js";
+
 
 const formValidation = {
   formSelector: '.popup__content',
@@ -115,7 +125,14 @@ const formValidation = {
   errorClass: 'popup__error_visible'
 };
 
-const formValidator = new FormValidator(formValidation);
-formValidator.enableValidation();
+const formElements = Array.from(document.querySelectorAll('.popup__content'));
+
+function Validation() {formElements.forEach(formElement => {
+  const formValidator = new FormValidator(formValidation, formElement);
+  formValidator.enableValidation();
+});
+};
+Validation();
+
 
 

@@ -25,4 +25,7 @@ function closePopupEsc(event) {
   };
 };
 
-export {openPopup, closePopup, closePopupOverlay, closePopupEsc};
+const popupImage = document.querySelector('.popup__foto');
+const popupCaption = document.querySelector('.popup__text');
+
+export {openPopup, closePopup, closePopupOverlay, closePopupEsc, popupImage, popupCaption};

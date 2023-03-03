@@ -1,4 +1,4 @@
-import {openPopup, closePopup, closePopupOverlay, closePopupEsc} from "./Utils.js";
+import {openPopup, closePopup, closePopupOverlay, closePopupEsc, popupImage, popupCaption} from "./utils.js";
 
 class Card {
   constructor(name, link, templateSelector) {
@@ -9,7 +9,7 @@ class Card {
   }
 
   _getTemplate() {
-    const cardElement = this._template.content.querySelector('.element').cloneNode(true);
+  const cardElement = this._template.content.querySelector('.element').cloneNode(true);
     return cardElement;
   }
 
@@ -31,9 +31,6 @@ class Card {
   }
 
   _handleCardClick() {
-    const popupImage = document.querySelector('.popup__foto');
-    const popupCaption = document.querySelector('.popup__text');
-
     popupImage.src = this._link;
     popupImage.alt = this._name;
     popupCaption.textContent = this._name;
@@ -41,12 +38,15 @@ class Card {
     openPopup(document.querySelector('.image-popup'));
   }
 
+
+
+
   generateCard() {
     this._cardElement = this._getTemplate();
 
-    const cardImage = this._cardElement.querySelector('.element__foto');
-    cardImage.src = this._link;
-    cardImage.alt = this._name;
+    this._cardImage = this._cardElement.querySelector('.element__foto');
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
 
     const cardCaption = this._cardElement.querySelector('.element__text');
     cardCaption.textContent = this._name;
