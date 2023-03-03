@@ -68,10 +68,7 @@ import Card from "./Card.js";
 
 const sectionElements = document.querySelector('.elements');
 
-function createCardElement (name, link, templateSelector) {
-  const card = new Card(name, link, templateSelector);
-  return card.generateCard();
-}
+
 
 
 
