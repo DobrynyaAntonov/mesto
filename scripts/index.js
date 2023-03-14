@@ -98,8 +98,16 @@ function handleFormSubmitAdd(evt) {
   sectionElements.prepend(cardElement);
   closePopup(addPopup);
   evt.target.reset();
-  Validation();
+
+  const formElements = document.querySelectorAll('.popup__content');
+
+  formElements.forEach(formElement => {
+    const formValidator = new FormValidator(formValidation, formElement);
+    formValidator.enableValidation();
+  });
 }
+
+
 
 
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
@@ -119,12 +127,10 @@ const formValidation = {
 
 const formElements = Array.from(document.querySelectorAll('.popup__content'));
 
-function Validation() {formElements.forEach(formElement => {
+formElements.forEach(formElement => {
   const formValidator = new FormValidator(formValidation, formElement);
   formValidator.enableValidation();
 });
-};
-Validation();
 
 
 

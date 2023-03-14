@@ -6,6 +6,7 @@ class Card {
     this._link = link;
     this._templateSelector = templateSelector;
     this._template = document.querySelector(this._templateSelector);
+    this._popup = document.querySelector('.image-popup');
   }
 
   _getTemplate() {
@@ -35,7 +36,7 @@ class Card {
     popupImage.alt = this._name;
     popupCaption.textContent = this._name;
 
-    openPopup(document.querySelector('.image-popup'));
+    openPopup(this._popup);
   }
 
 
