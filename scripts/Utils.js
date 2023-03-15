@@ -27,5 +27,6 @@ function closePopupEsc(event) {
 
 const popupImage = document.querySelector('.popup__foto');
 const popupCaption = document.querySelector('.popup__text');
+const popupFoto = document.querySelector('.image-popup');
 
-export {openPopup, closePopup, closePopupOverlay, closePopupEsc, popupImage, popupCaption};
+export {openPopup, closePopup, closePopupOverlay, closePopupEsc, popupImage, popupCaption, popupFoto};

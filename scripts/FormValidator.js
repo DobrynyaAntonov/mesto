@@ -33,29 +33,27 @@ class FormValidator {
     }
   }
 
-  _toggleButtonState() {
+  toggleButtonState() {
     const isFormValid = this._inputsList.every((inputElement) => inputElement.validity.valid);
     this._buttonElement.disabled = !isFormValid;
     this._buttonElement.classList.toggle(this._inactiveButtonClass, !isFormValid);
   }
 
   _setEventListeners() {
-    this._toggleButtonState();
+    this.toggleButtonState();
     this._inputsList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState();
+        this.toggleButtonState();
       });
     });
   }
 
   enableValidation() {
-    const formList = document.querySelectorAll(this._formSelector);
-    formList.forEach((formElement) => {
-      formElement.addEventListener('submit', (evt) => {
+    this._formElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
       });
-    });
+
     this._setEventListeners();
   }
 

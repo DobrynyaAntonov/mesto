@@ -1,4 +1,4 @@
-import {openPopup, closePopup, closePopupOverlay, closePopupEsc, popupImage, popupCaption} from "./utils.js";
+import {openPopup, closePopup, closePopupOverlay, closePopupEsc, popupImage, popupCaption, popupFoto} from "./utils.js";
 
 class Card {
   constructor(name, link, templateSelector) {
@@ -6,7 +6,6 @@ class Card {
     this._link = link;
     this._templateSelector = templateSelector;
     this._template = document.querySelector(this._templateSelector);
-    this._popup = document.querySelector('.image-popup');
   }
 
   _getTemplate() {
@@ -36,7 +35,7 @@ class Card {
     popupImage.alt = this._name;
     popupCaption.textContent = this._name;
 
-    openPopup(this._popup);
+    openPopup(popupFoto);
   }
 
 

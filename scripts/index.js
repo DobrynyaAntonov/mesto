@@ -8,6 +8,7 @@ const nameProfile = document.querySelector('.profile__info-name');
 const closeButtons = document.querySelectorAll('.popup__close');
 
 
+
 import { openPopup, closePopup, closePopupOverlay, closePopupEsc} from "./utils.js";
 
 popupOpenButtonElement.addEventListener('click', () => {
@@ -25,7 +26,6 @@ closeButtons.forEach((button) => {
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
   closePopup(profilePopup);
@@ -91,20 +91,11 @@ const srcInputAdd = document.querySelector('.popup__input-form_type_src-image');
 addOpenButtonElement.addEventListener('click', () => openPopup(addPopup));
 
 function handleFormSubmitAdd(evt) {
-  evt.preventDefault();
-  const name = nameInputAdd.value;
-  const link = srcInputAdd.value;
-  const cardElement = createCardItem(name, link, '#template');
+  const cardElement = createCardItem(nameInputAdd.value, srcInputAdd.value, '#template');
   sectionElements.prepend(cardElement);
   closePopup(addPopup);
   evt.target.reset();
-
-  const formElements = document.querySelectorAll('.popup__content');
-
-  formElements.forEach(formElement => {
-    const formValidator = new FormValidator(formValidation, formElement);
-    formValidator.enableValidation();
-  });
+  validatorAddCard.toggleButtonState();
 }
 
 
@@ -125,12 +116,12 @@ const formValidation = {
   errorClass: 'popup__error_visible'
 };
 
-const formElements = Array.from(document.querySelectorAll('.popup__content'));
+const formEditProfile = profilePopup.querySelector('.popup__content');
+const validatorEditProfile = new FormValidator(formValidation, formEditProfile);
+validatorEditProfile.enableValidation();
 
-formElements.forEach(formElement => {
-  const formValidator = new FormValidator(formValidation, formElement);
-  formValidator.enableValidation();
-});
-
+const formAddCard = addPopup.querySelector('.popup__content');
+const validatorAddCard = new FormValidator(formValidation, formAddCard);
+validatorAddCard.enableValidation();
 
 
