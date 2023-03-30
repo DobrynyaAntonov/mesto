@@ -1,11 +1,10 @@
-import {openPopup, closePopup, closePopupOverlay, closePopupEsc, popupImage, popupCaption, popupFoto} from "./utils.js";
-
 class Card {
-  constructor(name, link, templateSelector) {
-    this._name = name;
-    this._link = link;
+  constructor(data, templateSelector, handleCardClick) {
+    this._name = data.name;
+    this._link = data.link;
     this._templateSelector = templateSelector;
     this._template = document.querySelector(this._templateSelector);
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -25,21 +24,8 @@ class Card {
     });
 
     const cardImage = this._cardElement.querySelector('.element__foto');
-    cardImage.addEventListener('click', () => {
-      this._handleCardClick();
-    });
+    cardImage.addEventListener('click', this._handleCardClick);
   }
-
-  _handleCardClick() {
-    popupImage.src = this._link;
-    popupImage.alt = this._name;
-    popupCaption.textContent = this._name;
-
-    openPopup(popupFoto);
-  }
-
-
-
 
   generateCard() {
     this._cardElement = this._getTemplate();
@@ -56,4 +42,6 @@ class Card {
     return this._cardElement;
   }
 }
+
 export default Card;
+
