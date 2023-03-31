@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 
@@ -12,14 +11,14 @@
 
 
   <header class="header">
-    <img class="header__logo" src="./images/logo/logo.svg" alt="лого проекта mesto (Россия)">
+    <img class="header__logo" src="<%=require('./images/logo/logo.svg')%>" alt="лого проекта mesto (Россия)">
 
   </header>
 
 
   <main class="content">
     <section class="profile" aria-label="Секция с профилем">
-      <img class="profile__avatar" src="./images/image.jpg" alt="аватарка">
+      <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="аватарка">
       <div class="profile__info">
         <h1 class="profile__info-name">Жак-Ив Кусто</h1>
         <p class="profile__info-job">Исследователь океана</p>
@@ -78,7 +77,7 @@
           placeholder="Название">
           <span id="input-add-error" class="error"></span>
 
-        <input id="input-link" required class="popup__input-form popup__input-form_type_src-image" type="url" value="" name="job"
+        <input id="input-link" required class="popup__input-form popup__input-form_type_src-image" type="url" value="" name="link"
           placeholder="Ссылка на картинку">
           <span id="input-link-error" class="error"></span>
 
@@ -94,8 +93,6 @@
       <h2 class="popup__text"></h2>
     </div>
   </section>
-
-  <script type="module" src="./scripts/index.js" defer></script>
 
 </body>
 

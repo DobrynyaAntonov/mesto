@@ -15,6 +15,12 @@ class UserInfo {
      this._nameElement.textContent = name;
      this._jobElement.textContent = job;
   }
+
+  updateUserInfo(values) {
+    this._nameElement.textContent = values.name;
+    this._jobElement.textContent = values.job;
+  }
+
 }
 
 export default UserInfo

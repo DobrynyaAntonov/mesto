@@ -6,6 +6,7 @@ import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
 import {profilePopup, popupOpenButtonElement, addPopup, addOpenButtonElement, initialCards, formValidation} from "./utils.js"
 
+import '../pages/index.css';
 
 
 
@@ -15,20 +16,22 @@ import {profilePopup, popupOpenButtonElement, addPopup, addOpenButtonElement, in
 const user = new UserInfo('.profile__info-name', '.profile__info-job');
 const popupProf = new PopupWithForm('.profile-popup', callProfile);
 
-
-function callProfile (){
-  const values = popupProf._getInputValues();
-  user.setUserInfo(values.name, values.job)
+function callProfile(data) {
+  user.setUserInfo(data.name, data.job);
 }
 
-popupOpenButtonElement.addEventListener('click', ()=>{
-  user.getUserInfo();
-  popupProf.setInputValues(user.getUserInfo());
-  popupProf.setEventListeners();
-});
-;
+function openPopupWithUserInfo() {
+  const userInfo = user.getUserInfo();
+  popupProf.setInputValues(userInfo);
+  popupProf.open();
 
-// карточки на страницу
+}
+popupProf.setEventListeners();
+
+popupOpenButtonElement.addEventListener('click', openPopupWithUserInfo);
+
+
+// добавление карточек на старницу
 const ImagePopupOpen = new PopupWithImage('.image-popup');
 
 const CardList = new Section({
@@ -50,15 +53,18 @@ CardList.renderItems(initialCards);
 const popupAdd = new PopupWithForm('.add-popup', callNewCard);
 
 function callNewCard (){
-  const values = popupProf._getInputValues();
-  CardList.renderItems([values.name, values.job]);
+  const values = [popupAdd._getInputValues()];
+  CardList.renderItems(values);
 }
+
+  popupAdd.setEventListeners();
 
   addOpenButtonElement.addEventListener('click', ()=>{
     popupAdd.open();
-    popupAdd.setEventListeners();
     validatorAddCard.toggleButtonState();
   });
+
+
 
 // Валидация форм
 
