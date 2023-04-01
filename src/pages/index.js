@@ -1,10 +1,10 @@
-import FormValidator from "./FormValidator.js";
-import Card from "./Card.js";
-import PopupWithImage from "./PopupWithImage.js";
-import Section from "./Section.js";
-import PopupWithForm from "./PopupWithForm.js";
-import UserInfo from "./UserInfo.js";
-import {profilePopup, popupOpenButtonElement, addPopup, addOpenButtonElement, initialCards, formValidation} from "./utils.js"
+import FormValidator from "../components/FormValidator.js";
+import Card from "../components/Card.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+import {profilePopup, popupOpenButtonElement, addPopup, addOpenButtonElement, initialCards, formValidation} from "../utils/utils.js"
 
 import '../pages/index.css';
 
@@ -32,19 +32,20 @@ popupOpenButtonElement.addEventListener('click', openPopupWithUserInfo);
 
 
 // добавление карточек на старницу
-const ImagePopupOpen = new PopupWithImage('.image-popup');
+const imagePopup = new PopupWithImage('.image-popup');
 
 const CardList = new Section({
   items: initialCards,
   renderer: (item) => {
     const card = new Card(item, '#template', ()=>{
-      ImagePopupOpen.open(item.name, item.link);
-      ImagePopupOpen.setEventListeners();
+      imagePopup.open(item.name, item.link);
     })
     const cardElement = card.generateCard();
     CardList.addItem(cardElement);
   }
 }, '.elements');
+
+imagePopup.setEventListeners();
 
 CardList.renderItems(initialCards);
 
@@ -53,7 +54,7 @@ CardList.renderItems(initialCards);
 const popupAdd = new PopupWithForm('.add-popup', callNewCard);
 
 function callNewCard (){
-  const values = [popupAdd._getInputValues()];
+  const values = [popupAdd.getInputValues()];
   CardList.renderItems(values);
 }
 

@@ -12,19 +12,34 @@ class Card {
     return cardElement;
   }
 
+  _toggleLike() {
+    this._cardLikeButton.classList.toggle('element__like_active');
+  }
+
+  _deleteCard() {
+    this._cardElement.remove();
+  }
+
+  _handleImageClick() {
+    this._handleCardClick();
+  }
+
+
   _setEventListeners() {
-    const cardLikeButton = this._cardElement.querySelector('.element__like');
-    cardLikeButton.addEventListener('click', () => {
-      cardLikeButton.classList.toggle('element__like_active');
+    this._cardLikeButton = this._cardElement.querySelector('.element__like');
+    this._cardLikeButton.addEventListener('click', () => {
+      this._toggleLike();
     });
 
     const cardDeleteButton = this._cardElement.querySelector('.element__delete');
     cardDeleteButton.addEventListener('click', () => {
-      this._cardElement.remove();
+      this._deleteCard();
     });
 
     const cardImage = this._cardElement.querySelector('.element__foto');
-    cardImage.addEventListener('click', this._handleCardClick);
+    cardImage.addEventListener('click', () => {
+      this._handleImageClick();
+    });
   }
 
   generateCard() {
@@ -42,6 +57,7 @@ class Card {
     return this._cardElement;
   }
 }
+
 
 export default Card;
 
