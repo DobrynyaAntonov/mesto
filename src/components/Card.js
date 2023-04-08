@@ -5,8 +5,8 @@ class Card {
     this._templateSelector = templateSelector;
     this._template = document.querySelector(this._templateSelector).content;
     this._handleCardClick = handleCardClick;
-    this._likes = data.likes || [];
-    this._cardOwnerId = data.owner ? data.owner._id : null;
+    this._likes = data.likes;
+    this._cardOwnerId = data.owner._id;
     this._userId = userId;
     this._handleDeleteClick = handleDeleteClick;
     this._IdImage = data._id;

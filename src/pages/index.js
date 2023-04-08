@@ -142,8 +142,7 @@ const popupAdd = new PopupWithForm('.add-popup', (values) => {
   api
     .addCard(values.name, values.link)
     .then((data) => {
-      const card = [{ name: data.name, link: data.link }];
-      CardList.renderItems(card);
+      CardList.renderItems([data]);
       popupAdd.close();
     })
     .catch((err) => {
