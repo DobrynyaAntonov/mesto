@@ -18,10 +18,12 @@
 
   <main class="content">
     <section class="profile" aria-label="Секция с профилем">
-      <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="аватарка">
+      <button class="profile__button-avatar">
+        <img class="profile__avatar" alt="аватарка">
+      </button>
       <div class="profile__info">
-        <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-        <p class="profile__info-job">Исследователь океана</p>
+        <h1 class="profile__info-name"></h1>
+        <p class="profile__info-job"></p>
       </div>
       <button class="profile__button-edit" type="button" aria-label="кнопка редактирования профиля"></button>
       <button class="profile__button-add" type="button" aria-label="кнопка отправки текста"></button>
@@ -36,6 +38,7 @@
           <div class="element__container">
             <h2 class="element__text"></h2>
             <button class="element__like" type="button" aria-label="кнопка нравится"></button>
+            <span class="element__number-like"></span>
           </div>
         </div>
       </template>
@@ -57,10 +60,10 @@
       <button class="popup__close" type="button"></button>
       <h2 class="popup__content-text">Редактировать профиль</h2>
       <form class="popup__content" novalidate>
-        <input id="input-name" required minlength="2" maxlength="40" class="popup__input-form popup__input-form_type_name" type="text" value="Жак-Ив Кусто" name="name"
+        <input id="input-name" required minlength="2" maxlength="40" class="popup__input-form popup__input-form_type_name" type="text" value="" name="name"
           placeholder="введите имя">
           <span id="input-name-error"  class="error"></span>
-        <input id="input-job" required minlength="2" maxlength="200" class="popup__input-form popup__input-form_type_job" type="text" value="Исследователь океана" name="job"
+        <input id="input-job" required minlength="2" maxlength="200" class="popup__input-form popup__input-form_type_job" type="text" value="" name="job"
           placeholder="описание работы">
           <span id="input-job-error" class="error"></span>
         <button class="popup__submit" type="submit">Сохранить</button>
@@ -77,6 +80,30 @@
           placeholder="Название">
           <span id="input-add-error" class="error"></span>
 
+        <input id="input-link" required class="popup__input-form popup__input-form_type_src-image" type="url" value="" name="link"
+          placeholder="Ссылка на картинку">
+          <span id="input-link-error" class="error"></span>
+
+        <button class="popup__submit" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="popup delete-popup">
+    <div class="popup__container">
+      <button class="popup__close" type="button"></button>
+      <h2 class="popup__content-text">Вы уверены?</h2>
+      <form class="popup__content popup__delete-add" novalidate>
+        <button class="popup__submit popup__submit_delete" type="submit">Да</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="popup avatar-popup">
+    <div class="popup__container">
+      <button class="popup__close" type="button"></button>
+      <h2 class="popup__content-text">Обновить аватар</h2>
+      <form class="popup__content popup__content-add" novalidate>
         <input id="input-link" required class="popup__input-form popup__input-form_type_src-image" type="url" value="" name="link"
           placeholder="Ссылка на картинку">
           <span id="input-link-error" class="error"></span>
