@@ -31,11 +31,9 @@ class Card {
     this._cardElement.remove();
   }
 
-
   _handleImageClick() {
     this._handleCardClick();
   }
-
 
   _setEventListeners() {
     this._cardLikeButton = this._cardElement.querySelector('.element__like');
@@ -73,8 +71,6 @@ class Card {
     }
   }
 
-
-
   generateCard() {
     this._cardElement = this._getTemplate();
     this.updateLikesCounter(this._likes);
@@ -92,7 +88,4 @@ class Card {
     return this._cardElement;
   }
 }
-
-
 export default Card;
-

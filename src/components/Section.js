@@ -13,5 +13,4 @@ class Section {
     this._containerSelector.prepend(element)
   }
 }
-
 export default Section;

@@ -25,13 +25,13 @@ class Api {
     }).then(this._checkResponse);
   }
   //сохранение данных профиля
-  editUserInfo(name, job) {
+  editUserInfo(name, about) {
     return fetch(`${this._url}users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name: name,
-        about: job
+        about: about
       })
     }).then(this._checkResponse);
   }

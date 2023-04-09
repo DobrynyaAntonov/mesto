@@ -17,8 +17,4 @@ const formValidation = {
   errorClass: 'popup__error_visible'
 };
 
-
-
-
-
 export { profilePopup, popupOpenButtonElement, addPopup, addOpenButtonElement, formValidation, nameElement, aboutElement, avatarElement, avatarPopup, buttonAvatar };

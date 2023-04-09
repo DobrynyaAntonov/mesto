@@ -1,7 +1,8 @@
 class UserInfo {
-  constructor(nameSelector, jobSelector) {
+  constructor(nameSelector, jobSelector, avatarElement) {
     this._nameElement = document.querySelector(nameSelector);
     this._jobElement = document.querySelector(jobSelector);
+    this._avatarElement = document.querySelector(avatarElement);
   }
 
   getUserInfo() {
@@ -11,16 +12,10 @@ class UserInfo {
     };
   }
 
-  setUserInfo(name, job) {
-     this._nameElement.textContent = name;
-     this._jobElement.textContent = job;
+  setUserInfo(data) {
+     this._nameElement.textContent = data.name;
+     this._jobElement.textContent = data.about;
+     this._avatarElement.src = data.avatar;
   }
-
-  updateUserInfo(values) {
-    this._nameElement.textContent = values.name;
-    this._jobElement.textContent = values.job;
-  }
-
 }
-
 export default UserInfo
